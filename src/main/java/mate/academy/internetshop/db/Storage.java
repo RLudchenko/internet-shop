@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
-import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 
 public class Storage {
     public static final List<Product> products = new ArrayList<>();
-    public static final List<ShoppingCart> shoppingCarts = new ArrayList<>();
     private static final List<User> users = new ArrayList<>();
     private static final List<Order> orders = new ArrayList<>();
 

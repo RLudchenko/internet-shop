@@ -12,8 +12,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product create(Product product) {
-        Storage.addProduct(product);
-        return product;
+        return Storage.addProduct(product);
     }
 
     @Override
@@ -30,11 +29,17 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product update(Product product) {
-        return null;
+        Product updatedProduct = get(product.getId()).get();
+
+        updatedProduct.setName(product.getName());
+        updatedProduct.setPrice(product.getPrice());
+
+        return updatedProduct;
     }
 
     @Override
     public boolean delete(Long id) {
-        return false;
+        return Storage.getProducts()
+                .removeIf(product -> product.getId().equals(id));
     }
 }
