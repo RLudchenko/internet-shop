@@ -8,8 +8,8 @@ import mate.academy.internetshop.model.User;
 
 public class Storage {
     public static final List<Product> products = new ArrayList<>();
-    private static final List<User> users = new ArrayList<>();
-    private static final List<Order> orders = new ArrayList<>();
+    public static final List<User> users = new ArrayList<>();
+    public static final List<Order> orders = new ArrayList<>();
 
     private static Long productId = 0L;
 
@@ -18,9 +18,5 @@ public class Storage {
         product.setId(productId);
         products.add(product);
         return product;
-    }
-
-    public static List<Product> getProducts() {
-        return products;
     }
 }
