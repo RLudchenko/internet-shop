@@ -1,4 +1,4 @@
-package mate.academy.internetshop.service.impl;
+package mate.academy.internetshop.dao.impl;
 
 import java.util.NoSuchElementException;
 import mate.academy.internetshop.dao.ShoppingCartDao;
