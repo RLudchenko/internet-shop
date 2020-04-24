@@ -46,11 +46,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "User{"
+                + "userId=" + userId
+                + ", name='" + name + '\''
+                + ", login='" + login + '\''
+                + ", password='" + password + '\''
+                + '}';
     }
 }
