@@ -1,8 +1,7 @@
 package mate.academy.internetshop.service.impl;
 
-import mate.academy.internetshop.dao.interfaces.ProductDao;
+import java.util.List;
 import mate.academy.internetshop.dao.interfaces.ShoppingCartDao;
-import mate.academy.internetshop.dao.interfaces.UserDao;
 import mate.academy.internetshop.db.Storage;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
@@ -10,7 +9,6 @@ import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
-import java.util.List;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -29,7 +27,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        if(shoppingCart.getProducts().remove(product)) {
+        if (shoppingCart.getProducts().remove(product)) {
             shoppingCartDao.update(shoppingCart);
             return true;
         }
