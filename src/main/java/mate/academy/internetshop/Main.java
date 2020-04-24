@@ -2,8 +2,10 @@ package mate.academy.internetshop;
 
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.ProductService;
+import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
 
 public class Main {
@@ -40,5 +42,22 @@ public class Main {
         productService.update(productService.get(3L));
 
         userService.getAll().forEach(u -> System.out.println(u.toString()));
+
+        ShoppingCartService shoppingCartService =
+                (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
+
+        ShoppingCart shoppingCart1 = new ShoppingCart(user3);
+        ShoppingCart shoppingCart2 = new ShoppingCart(user2);
+        Product product1 = new Product("iPad Pro Plus", 2400.0);
+        Product product2 = new Product("Mac", 3200.0);
+
+        productService.create(product1);
+        productService.create(product2);
+
+        shoppingCartService.addProduct(shoppingCart1, product1);
+        shoppingCartService.addProduct(shoppingCart2, product2);
+
+        System.out.println("\n*********************************************\n");
+        System.out.println(shoppingCartService.getAllProducts(shoppingCart1));
     }
 }
