@@ -14,4 +14,6 @@ public interface ShoppingCartService {
     ShoppingCart getByUserId(Long userID);
 
     List<Product> getAllProducts(ShoppingCart shoppingCart);
+
+
 }

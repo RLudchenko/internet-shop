@@ -35,4 +35,13 @@ public class Order {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderID=" + orderID +
+                ", user=" + user +
+                ", products=" + products +
+                '}';
+    }
 }
