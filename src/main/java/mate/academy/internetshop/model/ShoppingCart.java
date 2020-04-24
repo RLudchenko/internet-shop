@@ -7,6 +7,10 @@ public class ShoppingCart {
     private List<Product> products;
     private User user;
 
+    public ShoppingCart(User user) {
+        this.user = user;
+    }
+
     public List<Product> getProducts() {
         return products;
     }

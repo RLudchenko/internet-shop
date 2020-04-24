@@ -2,6 +2,7 @@ package mate.academy.internetshop;
 
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.service.OrderService;
 import mate.academy.internetshop.service.ProductService;
 
 public class Main {
@@ -9,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         ProductService productService = (ProductService) injector.getInstance(ProductService.class);
+        OrderService orderService = (OrderService) injector.getInstance(OrderService.class);
 
         productService.create(new Product("iPhone X", 777.99));
         productService.create(new Product("iPhone XR", 925.99));

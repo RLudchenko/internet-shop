@@ -1,4 +1,4 @@
-package mate.academy.internetshop.dao;
+package mate.academy.internetshop.dao.interfaces;
 
 import java.util.List;
 import java.util.Optional;

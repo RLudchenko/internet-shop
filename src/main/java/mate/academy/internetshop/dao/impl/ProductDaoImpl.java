@@ -2,14 +2,14 @@ package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
-import mate.academy.internetshop.dao.ProductDao;
+import java.util.stream.IntStream;
+import mate.academy.internetshop.dao.interfaces.ProductDao;
 import mate.academy.internetshop.db.Storage;
 import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.Product;
 
 @Dao
 public class ProductDaoImpl implements ProductDao {
-
     @Override
     public Product create(Product product) {
         return Storage.addProduct(product);
@@ -28,11 +28,12 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product update(Product product) {
-        Product updatedProduct = get(product.getId()).get();
-
-        updatedProduct.setName(product.getName());
-        updatedProduct.setPrice(product.getPrice());
+    public Product update(Product updatedProduct) {
+        IntStream.range(0, Storage.products.size())
+                .filter(i -> Storage.products.get(i)
+                        .getId().equals(updatedProduct.getId()))
+                .forEach(i -> Storage.products
+                        .set(i, updatedProduct));
 
         return updatedProduct;
     }

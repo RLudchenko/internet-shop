@@ -1,12 +1,15 @@
 package mate.academy.internetshop.service.impl;
 
-import mate.academy.internetshop.dao.ProductDao;
-import mate.academy.internetshop.dao.ShoppingCartDao;
+import mate.academy.internetshop.dao.interfaces.ProductDao;
+import mate.academy.internetshop.dao.interfaces.ShoppingCartDao;
+import mate.academy.internetshop.dao.interfaces.UserDao;
+import mate.academy.internetshop.db.Storage;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ShoppingCartService;
+import mate.academy.internetshop.service.UserService;
 import java.util.List;
 
 @Service
@@ -15,7 +18,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     private ShoppingCartDao shoppingCartDao;
 
     @Inject
-    private ProductDao productDao;
+    private UserService userService;
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
@@ -26,21 +29,30 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
+        if(shoppingCart.getProducts().remove(product)) {
+            shoppingCartDao.update(shoppingCart);
+            return true;
+        }
         return false;
     }
 
     @Override
     public void clear(ShoppingCart shoppingCart) {
-
+        shoppingCart.getProducts().clear();
+        shoppingCartDao.update(shoppingCart);
     }
 
     @Override
-    public ShoppingCart getByUserId(Long userID) {
-        return null;
+    public ShoppingCart getByUserId(Long userId) {
+        return shoppingCartDao.getAll()
+                .stream()
+                .filter(shoppingCart -> shoppingCart.getUser().getId().equals(userId))
+                .findFirst()
+                .orElse(Storage.addCart(new ShoppingCart(userService.get(userId))));
     }
 
     @Override
     public List<Product> getAllProducts(ShoppingCart shoppingCart) {
-        return null;
+        return shoppingCart.getProducts();
     }
 }

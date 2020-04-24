@@ -1,12 +1,15 @@
 package mate.academy.internetshop.dao.impl;
 
-import java.util.NoSuchElementException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
-import mate.academy.internetshop.dao.ShoppingCartDao;
+import mate.academy.internetshop.dao.interfaces.ShoppingCartDao;
 import mate.academy.internetshop.db.Storage;
+import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.ShoppingCart;
 
+@Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
@@ -21,13 +24,18 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public ShoppingCart update(ShoppingCart updatedCart) {
-        ShoppingCart oldCart = get(updatedCart.getId()).get();
+    public List<ShoppingCart> getAll() {
+        return Storage.shoppingCarts;
+    }
 
-        if (oldCart != null) {
-            delete(oldCart.getId());
-            create(updatedCart);
-        }
+    @Override
+    public ShoppingCart update(ShoppingCart updatedCart) {
+        IntStream.range(0, Storage.shoppingCarts.size())
+                .filter(i -> Storage.shoppingCarts.get(i)
+                        .getId().equals(updatedCart.getId()))
+                .forEach(i -> Storage.shoppingCarts
+                        .set(i, updatedCart));
+
         return updatedCart;
     }
 

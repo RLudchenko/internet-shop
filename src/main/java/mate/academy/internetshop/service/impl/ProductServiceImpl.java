@@ -1,7 +1,7 @@
 package mate.academy.internetshop.service.impl;
 
 import java.util.List;
-import mate.academy.internetshop.dao.ProductDao;
+import mate.academy.internetshop.dao.interfaces.ProductDao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
