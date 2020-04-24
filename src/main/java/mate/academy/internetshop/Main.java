@@ -46,13 +46,14 @@ public class Main {
         ShoppingCartService shoppingCartService =
                 (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
 
-        ShoppingCart shoppingCart1 = new ShoppingCart(user3);
-        ShoppingCart shoppingCart2 = new ShoppingCart(user2);
         Product product1 = new Product("iPad Pro Plus", 2400.0);
         Product product2 = new Product("Mac", 3200.0);
 
         productService.create(product1);
         productService.create(product2);
+
+        ShoppingCart shoppingCart1 = new ShoppingCart(user3);
+        ShoppingCart shoppingCart2 = new ShoppingCart(user2);
 
         shoppingCartService.addProduct(shoppingCart1, product1);
         shoppingCartService.addProduct(shoppingCart2, product2);
