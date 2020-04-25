@@ -2,7 +2,6 @@ package mate.academy.internetshop.service.impl;
 
 import java.util.List;
 import mate.academy.internetshop.dao.interfaces.ShoppingCartDao;
-import mate.academy.internetshop.db.Storage;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
@@ -46,7 +45,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .stream()
                 .filter(shoppingCart -> shoppingCart.getUser().getId().equals(userId))
                 .findFirst()
-                .orElse(Storage.addCart(new ShoppingCart(userService.get(userId))));
+                .orElseGet(() -> shoppingCartDao.create(
+                        new ShoppingCart(userService.get(userId))));
     }
 
     @Override

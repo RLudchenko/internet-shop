@@ -42,20 +42,24 @@ public class Main {
 
         productService.delete(2L);
         productService.update(productService.get(3L));
+        System.out.println(user2.getId());
 
         userService.getAll().forEach(u -> System.out.println(u.toString()));
 
-        ShoppingCartService shoppingCartService =
-                (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
-
         Product product1 = new Product("iPad Pro Plus", 2400.0);
         Product product2 = new Product("Mac", 3200.0);
+        Product product3 = new Product("Test", 3000.0);
 
         productService.create(product1);
+        productService.update(product1);
         productService.create(product2);
+        productService.update(product2);
 
         ShoppingCart shoppingCart1 = new ShoppingCart(user3);
         ShoppingCart shoppingCart2 = new ShoppingCart(user2);
+
+        ShoppingCartService shoppingCartService =
+                (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
 
         shoppingCartService.addProduct(shoppingCart1, product1);
         shoppingCartService.addProduct(shoppingCart2, product2);
@@ -70,6 +74,6 @@ public class Main {
                 shoppingCartService.getAllProducts(shoppingCart2), user2);
 
         System.out.println("\n*********************************************\n");
-        System.out.println(shoppingCartService.getByUserId(user2.getId()));
+        System.out.println(shoppingCartService.getByUserId(user3.getId()));
     }
 }
