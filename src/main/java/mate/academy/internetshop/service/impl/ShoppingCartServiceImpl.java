@@ -45,8 +45,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .stream()
                 .filter(shoppingCart -> shoppingCart.getUser().getId().equals(userId))
                 .findFirst()
-                .orElseGet(() -> shoppingCartDao.create(
-                        new ShoppingCart(userService.get(userId))));
+                .get();
     }
 
     @Override
