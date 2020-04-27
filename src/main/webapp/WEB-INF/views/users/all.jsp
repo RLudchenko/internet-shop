@@ -12,10 +12,10 @@
         <th>ID</th>
         <th>Name</th>
     </tr>
-    <c:forEach var="User" items="${users}">
+    <c:forEach var="user" items="${users}">
         <tr>
             <td>
-                <c:out value ="${user.userID}"/>
+                <c:out value ="${user.getId()}"/>
             </td>
             <td>
                 <c:out value ="${user.name}"/>
