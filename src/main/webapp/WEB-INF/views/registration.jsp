@@ -6,11 +6,15 @@
 <body>
 <h1>Please provide your login details</h1>
 <h4 style="color: #8b0000">${message}</h4>
+
 <form method="post" action="${pageContext.request.contextPath}/registration">
-    Type in your login <input type="text" name="login">
-    Type in your pass <input type="password" name="pwd">
-    Confirm your pass <input type="password" name="pwd-confirm">
-    <button type="submit">Register</button>
+<ul>
+    <li> Type in your name <input type="text" name="name"> </li>
+    <li> Type in your login <input type="text" name="login"> </li>
+    <li> Type in your pass <input type="password" name="pwd"> </li>
+    <li> Confirm your pass <input type="password" name="pwd-confirm"> </li>
+    <li> <button type="submit">Register</button> </li>
+</ul>
 </form>
 </body>
 </html>

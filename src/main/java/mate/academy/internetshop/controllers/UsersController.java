@@ -18,12 +18,6 @@ public class UsersController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        User ross = new User("Ross", "ross357", "344");
-        User john = new User("John", "john333", "mypass");
-
-        userService.create(ross);
-        userService.create(john);
-
         List<User> allUsers = userService.getAll();
 
         req.setAttribute("users", allUsers);

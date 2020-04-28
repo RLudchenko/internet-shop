@@ -20,6 +20,9 @@
             <td>
                 <c:out value ="${user.name}"/>
             </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/users/delete?id=${user.getId()}">Delete</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
