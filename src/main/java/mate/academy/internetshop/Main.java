@@ -68,11 +68,5 @@ public class Main {
 
         OrderService orderService =
                 (OrderService) injector.getInstance(OrderService.class);
-
-        //      Order order2 = orderService.completeOrder(
-        //              shoppingCartService.getAllProducts(shoppingCart2), user2);
-
-        //       System.out.println("\n*********************************************\n");
-        //       System.out.println(shoppingCartService.getByUserId(user3.getId()));
     }
 }

@@ -15,10 +15,10 @@ import mate.academy.internetshop.service.UserService;
 
 public class InjectDataController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
-    private UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
-    private ProductService productService =
+    private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
+    private final ProductService productService =
             (ProductService) INJECTOR.getInstance(ProductService.class);
-    private ShoppingCartService shoppingCartService =
+    private final ShoppingCartService shoppingCartService =
             (ShoppingCartService) INJECTOR.getInstance(ShoppingCartService.class);
 
     @Override
