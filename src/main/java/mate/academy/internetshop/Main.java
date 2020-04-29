@@ -1,7 +1,6 @@
 package mate.academy.internetshop;
 
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
@@ -69,11 +68,5 @@ public class Main {
 
         OrderService orderService =
                 (OrderService) injector.getInstance(OrderService.class);
-
-        Order order2 = orderService.completeOrder(
-                shoppingCartService.getAllProducts(shoppingCart2), user2);
-
-        System.out.println("\n*********************************************\n");
-        System.out.println(shoppingCartService.getByUserId(user3.getId()));
     }
 }
