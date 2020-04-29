@@ -1,5 +1,10 @@
 package mate.academy.internetshop.controllers;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
@@ -8,19 +13,13 @@ import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 public class InjectDataController extends HttpServlet {
-    private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
-    private UserService userService = (UserService) injector.getInstance(UserService.class);
+    private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
+    private UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
     private ProductService productService =
-            (ProductService) injector.getInstance(ProductService.class);
+            (ProductService) INJECTOR.getInstance(ProductService.class);
     private ShoppingCartService shoppingCartService =
-            (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
+            (ShoppingCartService) INJECTOR.getInstance(ShoppingCartService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,13 +27,13 @@ public class InjectDataController extends HttpServlet {
         User ross = new User("Ross", "ross357", "344");
         User john = new User("John", "john333", "mypass");
 
-        Product product1 = new Product("iPhone", 999.99);
-        Product product2 = new Product("iPad", 1999.99);
-
         userService.create(ross);
         userService.create(john);
 
         ShoppingCart shoppingCart = new ShoppingCart(ross);
+
+        Product product1 = new Product("iPhone", 999.99);
+        Product product2 = new Product("iPad", 1999.99);
 
         productService.create(product1);
         productService.create(product2);

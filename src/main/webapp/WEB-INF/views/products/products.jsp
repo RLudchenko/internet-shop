@@ -12,6 +12,8 @@
         <th>ID</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Delete</th>
+        <th>Add</th>
     </tr>
     <c:forEach var="product" items="${products}">
         <tr>
@@ -26,6 +28,9 @@
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/products/delete?id=${product.getId()}">Delete</a>
+            </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/products/add?id=${product.getId()}">Add</a>
             </td>
         </tr>
     </c:forEach>
