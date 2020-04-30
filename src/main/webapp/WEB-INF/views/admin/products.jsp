@@ -10,22 +10,24 @@
 <table border="1">
     <tr>
         <th>ID</th>
-        <th>Products</th>
+        <th>Name</th>
+        <th>Price</th>
         <th>Delete</th>
+        <th>Add</th>
     </tr>
-    <c:forEach var="order" items="${orders}">
+    <c:forEach var="product" items="${products}">
         <tr>
             <td>
-                <c:out value ="${order.getId()}"/>
+                <c:out value ="${product.getId()}"/>
             </td>
             <td>
-                <c:out value ="${order.getUser().getName()}"/>
+                <c:out value ="${product.name}"/>
             </td>
             <td>
-                <a class="btn" href="${pageContext.request.contextPath}/order/detail?id=${order.getId()}">Details</a>
+                <c:out value ="${product.price}"/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/order/delete?id=${order.getId()}">Delete</a>
+                <a href="${pageContext.request.contextPath}/products/delete?id=${product.getId()}">Delete</a>
             </td>
         </tr>
     </c:forEach>

@@ -26,9 +26,9 @@
             <td>
                 <c:out value ="${product.price}"/>
             </td>
-            <td>
-                <a href="${pageContext.request.contextPath}/products/delete?id=${product.getId()}">Delete</a>
-            </td>
+<%--            <td>--%>
+<%--                <a href="${pageContext.request.contextPath}/products/delete?id=${product.getId()}">Delete</a>--%>
+<%--            </td>--%>
             <td>
                 <a href="${pageContext.request.contextPath}/products/addToCart?id=${product.getId()}">Add</a>
             </td>
