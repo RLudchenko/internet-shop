@@ -1,6 +1,7 @@
 package mate.academy.internetshop;
 
 import mate.academy.internetshop.lib.Injector;
+import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;

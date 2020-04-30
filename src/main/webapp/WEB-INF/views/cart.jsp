@@ -30,5 +30,7 @@
         </tr>
     </c:forEach>
 </table>
+<a сlass="btn btn-info btn-block my-4 float-right" href="${pageContext.request.contextPath}/order">Complete Order</a>
+</form>
 </body>
 </html>
