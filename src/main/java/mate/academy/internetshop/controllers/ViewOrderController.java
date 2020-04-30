@@ -18,8 +18,6 @@ import java.util.List;
 
 @WebServlet("/orders")
 public class ViewOrderController extends HttpServlet {
-    private static final Long USER_ID = 1L;
-
     private static final Injector INJECTOR =
             Injector.getInstance("mate.academy.internetshop");
     private final ShoppingCartService shoppingCartService =

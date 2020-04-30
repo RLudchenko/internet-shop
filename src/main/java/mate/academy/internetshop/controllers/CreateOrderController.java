@@ -1,7 +1,6 @@
 package mate.academy.internetshop.controllers;
 
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
@@ -32,7 +31,8 @@ public class CreateOrderController extends HttpServlet {
         User user = shoppingCart.getUser();
         List<Product> products = shoppingCart.getProducts();
         orderService.completeOrder(products, user);
-        req.getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(req, resp);
+        //req.getRequestDispatcher("/WEB-INF/views/orders.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath()+ "/orders");
         shoppingCartService.clear(shoppingCart);
     }
 }
