@@ -1,18 +1,18 @@
 package mate.academy.internetshop.controllers;
 
+import java.io.IOException;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.OrderService;
 import mate.academy.internetshop.service.ShoppingCartService;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/order")
 public class CreateOrderController extends HttpServlet {
@@ -32,6 +32,6 @@ public class CreateOrderController extends HttpServlet {
         shoppingCartService.clear(shoppingCart);
         User user = shoppingCart.getUser();
         orderService.completeOrder(products, user);
-        resp.sendRedirect(req.getContextPath()+ "/orders");
+        resp.sendRedirect(req.getContextPath() + "/orders");
     }
 }
