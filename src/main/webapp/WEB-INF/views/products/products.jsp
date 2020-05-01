@@ -12,13 +12,12 @@
         <th>ID</th>
         <th>Name</th>
         <th>Price</th>
-        <th>Delete</th>
         <th>Add</th>
     </tr>
     <c:forEach var="product" items="${products}">
         <tr>
             <td>
-                <c:out value ="${product.getId()}"/>
+                <c:out value ="${product.id}"/>
             </td>
             <td>
                 <c:out value ="${product.name}"/>
@@ -26,11 +25,8 @@
             <td>
                 <c:out value ="${product.price}"/>
             </td>
-<%--            <td>--%>
-<%--                <a href="${pageContext.request.contextPath}/products/delete?id=${product.getId()}">Delete</a>--%>
-<%--            </td>--%>
             <td>
-                <a href="${pageContext.request.contextPath}/products/addToCart?id=${product.getId()}">Add</a>
+                <a href="${pageContext.request.contextPath}/products/addToCart?id=${product.id}">Add</a>
             </td>
         </tr>
     </c:forEach>
