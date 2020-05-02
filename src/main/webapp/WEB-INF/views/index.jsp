@@ -26,7 +26,7 @@
             <a href="${pageContext.request.contextPath}/orders">Orders</a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}admin/products">Admin Products</a>
+            <a href="${pageContext.request.contextPath}admin/products">Admin Panel</a>
         </li>
     </ul>
 </body>
