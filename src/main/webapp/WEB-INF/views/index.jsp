@@ -22,9 +22,9 @@
         <li>
             <a href="${pageContext.request.contextPath}/cart">Cart</a>
         </li>
-        <li>
-            <a href="${pageContext.request.contextPath}/addProduct">Add Products</a>
-        </li>
+<%--        <li>--%>
+<%--            <a href="${pageContext.request.contextPath}/addProduct">Add Products</a>--%>
+<%--        </li>--%>
         <li>
             <a href="${pageContext.request.contextPath}/orders">Orders</a>
         </li>

@@ -1,4 +1,4 @@
-package mate.academy.internetshop.controllers;
+package mate.academy.internetshop.controllers.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +22,6 @@ public class ViewAdminProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         List<Product> allProducts = productService.getAll();
-
         req.setAttribute("products", allProducts);
         req.getRequestDispatcher("/WEB-INF/views/admin/products.jsp").forward(req, resp);
     }

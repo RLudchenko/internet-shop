@@ -13,7 +13,6 @@
         <th>Name</th>
         <th>Price</th>
         <th>Delete</th>
-        <th>Add</th>
     </tr>
     <c:forEach var="product" items="${products}">
         <tr>
@@ -31,6 +30,9 @@
             </td>
         </tr>
     </c:forEach>
+    <td>
+        <a href="${pageContext.request.contextPath}/addProduct">Add Products</a>
+    </td>
 </table>
 </body>
 </html>
