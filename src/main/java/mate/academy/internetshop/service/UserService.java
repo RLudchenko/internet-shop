@@ -1,6 +1,8 @@
 package mate.academy.internetshop.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import mate.academy.internetshop.model.User;
 
 public interface UserService {
@@ -13,4 +15,6 @@ public interface UserService {
     User update(User user);
 
     boolean delete(Long id);
+
+    Optional<User> findByLogin(String login);
 }
