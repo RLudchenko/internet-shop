@@ -11,8 +11,8 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
-import mate.academy.internetshop.service.OrderService;
-import mate.academy.internetshop.service.ShoppingCartService;
+import mate.academy.internetshop.service.interfaces.OrderService;
+import mate.academy.internetshop.service.interfaces.ShoppingCartService;
 
 @WebServlet("/order")
 public class CreateOrderController extends HttpServlet {

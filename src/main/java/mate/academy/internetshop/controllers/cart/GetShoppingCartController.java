@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
-import mate.academy.internetshop.service.ShoppingCartService;
+import mate.academy.internetshop.service.interfaces.ShoppingCartService;
 
 @WebServlet("/cart")
 public class GetShoppingCartController extends HttpServlet {

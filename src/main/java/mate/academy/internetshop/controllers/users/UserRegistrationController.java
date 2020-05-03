@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
-import mate.academy.internetshop.service.ShoppingCartService;
-import mate.academy.internetshop.service.UserService;
+import mate.academy.internetshop.service.interfaces.ShoppingCartService;
+import mate.academy.internetshop.service.interfaces.UserService;
 
 public class UserRegistrationController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("mate.academy.internetshop");

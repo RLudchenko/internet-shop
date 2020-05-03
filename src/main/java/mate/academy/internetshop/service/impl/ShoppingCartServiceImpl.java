@@ -6,8 +6,8 @@ import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
-import mate.academy.internetshop.service.ShoppingCartService;
-import mate.academy.internetshop.service.UserService;
+import mate.academy.internetshop.service.interfaces.ShoppingCartService;
+import mate.academy.internetshop.service.interfaces.UserService;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {

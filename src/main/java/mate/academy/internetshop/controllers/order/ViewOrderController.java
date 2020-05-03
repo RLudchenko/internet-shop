@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Order;
-import mate.academy.internetshop.service.OrderService;
-import mate.academy.internetshop.service.ShoppingCartService;
+import mate.academy.internetshop.service.interfaces.OrderService;
+import mate.academy.internetshop.service.interfaces.ShoppingCartService;
 
 @WebServlet("/orders")
 public class ViewOrderController extends HttpServlet {
