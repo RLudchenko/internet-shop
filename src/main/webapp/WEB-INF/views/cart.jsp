@@ -6,7 +6,7 @@
     <title>All products</title>
 </head>
 <body>
-<h1>All products page</h1>
+<h1>Your Cart</h1>
 
 <table border="1">
     <tr>
