@@ -12,18 +12,11 @@ import mate.academy.internetshop.service.interfaces.UserService;
 
 public class ViewUsersController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
-    private static final String USER_ID = "user_id";
     private final UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Long userId = (Long) req.getSession().getAttribute(USER_ID);
-        if (userId == null || userService.get(userId) == null) {
-            resp.sendRedirect("/login");
-            return;
-        }
-
         List<User> allUsers = userService.getAll();
 
         req.setAttribute("users", allUsers);
