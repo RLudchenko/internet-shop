@@ -1,17 +1,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="include/header.jsp"></jsp:include>
 <html>
 <head>
-    <title>Login</title>
+    <title>Registration</title>
 </head>
 <body>
-<h1>Login page</h1>
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-body">
 
-<h4 style="color:red">${errorMsg}</h4>
+                    <form method="post" action="${pageContext.request.contextPath}/login">
+                        <p class="h4 text-center py-4">Login</p>
+                        <div class="md-form">
+                            <i class="fa fa-sign-in-alt prefix grey-text"></i>
+                            <input name="login" type="text" id="materialFormCardEmailEx" class="form-control">
+                            <label for="materialFormCardEmailEx" class="font-weight-light">Login</label>
+                        </div>
 
-<form action="${pageContext.request.contextPath}/login", method="post">
-    <li> Type in your login <input type="text" name="login"> </li>
-    <li> Type in your pass <input type="password" name="pwd"> </li>
-    <li> <button type="submit">Login</button> </li>
-</form>
-</body>
-</html>
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input name="pwd" type="password" id="materialFormCardConfirmEx" class="form-control">
+                            <label for="materialFormCardConfirmEx" class="font-weight-light">Password</label>
+                        </div>
+
+                        <div class="my-2 text-center">
+                            <div class="d-inline invalid-feedback">
+                                ${errorMsg}
+                            </div>
+                        </div>
+                        <div class="text-center py-4 mt-3">
+                            <button class="btn btn-cyan" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<jsp:include page="include/footer.jsp"></jsp:include>

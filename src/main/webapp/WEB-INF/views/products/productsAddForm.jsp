@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <html>
 <head>
     <title>Add Product</title>
@@ -15,3 +16,4 @@
 </form>
 </body>
 </html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

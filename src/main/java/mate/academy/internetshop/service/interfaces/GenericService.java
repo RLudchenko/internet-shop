@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface GenericService<T, K> {
     T create(T element);
 
-    Optional<T> get(K id);
+    T get(K id);
 
     T update(T element);
 
