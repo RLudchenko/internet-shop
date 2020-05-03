@@ -5,12 +5,12 @@
     <div class="row d-flex justify-content-center mt-5">
         <div class="col-6">
             <table class="table">
-                <thead class="purple white-text">
+                <thead class="danger-color white-text">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Add</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <c:forEach var="product" items="${products}">

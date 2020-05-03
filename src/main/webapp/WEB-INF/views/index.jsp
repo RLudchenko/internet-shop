@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="include/header.jsp"></jsp:include>
-<h1>Hello World!</h1>
+<h1>Welcome to Ross Store!</h1>
     <ul>
         <li>
             <a href="${pageContext.request.contextPath}/injectData">Inject test data into the DB</a>

@@ -5,7 +5,7 @@
     <div class="row d-flex justify-content-center mt-5">
         <div class="col-6">
 <table class="table">
-    <thead class="black white-text">
+    <thead class="success-color white-text">
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
