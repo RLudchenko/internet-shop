@@ -20,8 +20,6 @@ public class LoginController extends HttpServlet {
     private final AuthenticationService authService
             = (AuthenticationService) INJECTOR.getInstance(AuthenticationService.class);
 
-    private boolean isUserLogged = false;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
