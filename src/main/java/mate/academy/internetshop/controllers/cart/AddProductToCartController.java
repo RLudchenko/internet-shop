@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
-import mate.academy.internetshop.security.AuthenticationService;
 import mate.academy.internetshop.service.interfaces.ProductService;
 import mate.academy.internetshop.service.interfaces.ShoppingCartService;
 
