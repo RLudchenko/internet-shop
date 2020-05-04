@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.service.interfaces.OrderService;
-import mate.academy.internetshop.service.interfaces.ShoppingCartService;
 import mate.academy.internetshop.service.interfaces.UserService;
 
 @WebServlet("/orders")
