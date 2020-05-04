@@ -12,9 +12,6 @@
             <a href="${pageContext.request.contextPath}/products">All Products</a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/registration">Registration</a>
-        </li>
-        <li>
             <a href="${pageContext.request.contextPath}/cart">Cart</a>
         </li>
         <li>
@@ -22,6 +19,9 @@
         </li>
         <li>
             <a href="${pageContext.request.contextPath}admin/products">Admin Panel</a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/registration">Registration</a>
         </li>
     </ul>
 <jsp:include page="include/footer.jsp"></jsp:include>

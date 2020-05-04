@@ -3,10 +3,10 @@
 <jsp:include page="include/header.jsp"></jsp:include>
 <html>
 <head>
-    <title>All products</title>
+    <title>All Orders</title>
 </head>
 <body>
-<h1>All products page</h1>
+<h1>All Orders</h1>
 
 <table border="1">
     <tr>
