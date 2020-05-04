@@ -17,8 +17,6 @@ import mate.academy.internetshop.service.interfaces.UserService;
 public class ViewOrderController extends HttpServlet {
     private static final Injector INJECTOR =
             Injector.getInstance("mate.academy.internetshop");
-    private final ShoppingCartService shoppingCartService =
-            (ShoppingCartService) INJECTOR.getInstance(ShoppingCartService.class);
     private final OrderService orderService =
             (OrderService) INJECTOR.getInstance(OrderService.class);
     private final UserService userService =
