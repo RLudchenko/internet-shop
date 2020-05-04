@@ -9,12 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import mate.academy.internetshop.exceptions.AuthenticationException;
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.security.AuthenticationService;
 
 @WebServlet("/login")
-@Service
 public class LoginController extends HttpServlet {
     public static final Injector INJECTOR = Injector.getInstance("mate.academy");
     private final AuthenticationService authService
