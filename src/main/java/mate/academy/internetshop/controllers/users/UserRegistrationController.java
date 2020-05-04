@@ -1,4 +1,4 @@
-package mate.academy.internetshop.controllers;
+package mate.academy.internetshop.controllers.users;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
-import mate.academy.internetshop.service.ShoppingCartService;
-import mate.academy.internetshop.service.UserService;
+import mate.academy.internetshop.service.interfaces.ShoppingCartService;
+import mate.academy.internetshop.service.interfaces.UserService;
 
 public class UserRegistrationController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
@@ -20,7 +20,7 @@ public class UserRegistrationController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/registration.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/users/registration.jsp").forward(req, resp);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class UserRegistrationController extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/");
         } else {
             req.setAttribute("message", "Your passwords doesn't match");
-            req.getRequestDispatcher("/WEB-INF/views/registration.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/users/registration.jsp").forward(req, resp);
         }
     }
 }

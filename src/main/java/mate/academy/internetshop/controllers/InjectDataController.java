@@ -9,9 +9,9 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
-import mate.academy.internetshop.service.ProductService;
-import mate.academy.internetshop.service.ShoppingCartService;
-import mate.academy.internetshop.service.UserService;
+import mate.academy.internetshop.service.interfaces.ProductService;
+import mate.academy.internetshop.service.interfaces.ShoppingCartService;
+import mate.academy.internetshop.service.interfaces.UserService;
 
 public class InjectDataController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");

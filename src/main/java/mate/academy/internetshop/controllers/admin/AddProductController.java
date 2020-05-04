@@ -1,4 +1,4 @@
-package mate.academy.internetshop.controllers;
+package mate.academy.internetshop.controllers.admin;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
-import mate.academy.internetshop.service.ProductService;
+import mate.academy.internetshop.service.interfaces.ProductService;
 
 @WebServlet("/addProduct")
 public class AddProductController extends HttpServlet {

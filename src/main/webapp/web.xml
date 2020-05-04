@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>allUsers</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.UsersViewController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.users.ViewUsersController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -36,7 +36,7 @@
 
     <servlet>
         <servlet-name>delete</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.UserDeleteController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.users.UserDeleteController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -46,12 +46,21 @@
 
     <servlet>
         <servlet-name>registration</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.UserRegistrationController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.users.UserRegistrationController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
+    
+    <filter>
+        <filter-name>authenticationFilter</filter-name>
+        <filter-class>mate.academy.internetshop.web.filters.AuthenticationFilter</filter-class>
+    </filter>
 
+    <filter-mapping>
+        <filter-name>authenticationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

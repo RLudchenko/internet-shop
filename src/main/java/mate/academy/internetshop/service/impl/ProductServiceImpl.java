@@ -5,7 +5,7 @@ import mate.academy.internetshop.dao.interfaces.ProductDao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Product;
-import mate.academy.internetshop.service.ProductService;
+import mate.academy.internetshop.service.interfaces.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
