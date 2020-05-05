@@ -4,9 +4,8 @@
     <div class="jumbotron mt-5">
         <h1 class="display-4">WELCOME TO OUR STORE</h1>
         <p class="lead">
-            If you want rainbow, you have to deal with the rain.
+            If you want rainbow, you have to deal with the rain
         </p>
-        <hr class="my-4">
         <p class="lead">
             © Augustus
         </p>
