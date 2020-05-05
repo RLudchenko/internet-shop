@@ -40,6 +40,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+            </li>
         </ul>
     </div>
 </nav>
