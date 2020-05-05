@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<h1>Sorry! Access to this page is denied!</h1>
-</body>
-</html>
+<jsp:include page="../include/header.jsp"></jsp:include>
+<div class="container">
+    <div class="jumbotron mt-5">
+        <h1 class="display-4">ACCESS DENIED!</h1>
+    </div>
+</div>
+<jsp:include page="../include/footer.jsp"></jsp:include>
