@@ -7,6 +7,13 @@ public class User {
     private String name;
     private String login;
     private String password;
+    private Set<Role> roles;
+
+    public User(String name, String login, String password) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+    }
 
     public Long getUserId() {
         return userId;
@@ -18,14 +25,6 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    private Set<Role> roles;
-
-    public User(String name, String login, String password) {
-        this.name = name;
-        this.login = login;
-        this.password = password;
     }
 
     public Long getId() {

@@ -1,12 +1,14 @@
 package mate.academy.internetshop.controllers;
 
 import java.io.IOException;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.interfaces.ProductService;
@@ -24,11 +26,19 @@ public class InjectDataController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        User ross = new User("Ross", "ross357", "344");
-        User john = new User("John", "john333", "mypass");
+        //User ross = new User("Ross", "ross357", "344");
 
+        User ross = new User("Ross", "ross", "1");
+        ross.setRoles(Set.of(Role.of("USER")));
         userService.create(ross);
+
+        User john = new User("John", "john", "1");
+        john.setRoles(Set.of(Role.of("USER")));
         userService.create(john);
+
+        User admin = new User("admin", "admin", "1");
+        admin.setRoles(Set.of(Role.of("ADMIN")));
+        userService.create(admin);
 
         ShoppingCart shoppingCart = new ShoppingCart(ross);
 
