@@ -3,6 +3,7 @@ package mate.academy.internetshop.controllers.users;
 import java.io.IOException;
 import java.util.Set;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.interfaces.ShoppingCartService;
 import mate.academy.internetshop.service.interfaces.UserService;
 
+@WebServlet("/registration")
 public class UserRegistrationController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
     private final UserService userService = (UserService) injector.getInstance(UserService.class);
