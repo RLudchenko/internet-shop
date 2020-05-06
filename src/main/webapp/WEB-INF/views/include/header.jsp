@@ -26,19 +26,25 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/products">All Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/registration">Registration</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/cart">Cart</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/orders">Orders</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/orders">Admin Orders</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}admin/products">Admin Panel</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/registration">Registration</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>
         </ul>
     </div>
