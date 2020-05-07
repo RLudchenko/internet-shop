@@ -35,7 +35,7 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/admin/orders">Admin Orders</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}admin/products">Admin Panel</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/products">Admin Panel</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/registration">Registration</a>
