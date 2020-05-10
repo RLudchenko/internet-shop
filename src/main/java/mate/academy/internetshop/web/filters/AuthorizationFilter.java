@@ -59,7 +59,7 @@ public class AuthorizationFilter implements Filter {
             return;
         } else {
             LOGGER.warn("ACCESS DENIED FOR THE USER WITH AN ID: " + user.getId()
-                    + "ON THE PAGE " + requestedUrl);
+                    + " ON THE PAGE " + requestedUrl);
             req.getRequestDispatcher("/WEB-INF/views/access/accessDenied.jsp").forward(req, resp);
         }
     }
