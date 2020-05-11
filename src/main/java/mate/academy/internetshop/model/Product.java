@@ -1,5 +1,7 @@
 package mate.academy.internetshop.model;
 
+import java.util.Objects;
+
 public class Product {
     private Long id;
     private String name;
@@ -32,6 +34,11 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
     }
 
     @Override

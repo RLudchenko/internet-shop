@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.Role;
-import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.interfaces.ProductService;
 import mate.academy.internetshop.service.interfaces.ShoppingCartService;
@@ -39,17 +37,6 @@ public class InjectDataController extends HttpServlet {
         User admin = new User("admin", "admin", "1");
         admin.setRoles(Set.of(Role.of("ADMIN")));
         userService.create(admin);
-
-        ShoppingCart shoppingCart = new ShoppingCart(ross);
-
-        Product product1 = new Product("iPhone", 999.99);
-        Product product2 = new Product("iPad", 1999.99);
-
-        productService.create(product1);
-        productService.create(product2);
-
-        shoppingCartService.create(shoppingCart);
-        shoppingCartService.addProduct(shoppingCart, product1);
 
         req.getRequestDispatcher("/WEB-INF/views/injectData.jsp").forward(req, resp);
     }
