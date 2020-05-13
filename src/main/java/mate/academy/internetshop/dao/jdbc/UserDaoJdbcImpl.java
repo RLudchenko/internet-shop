@@ -7,29 +7,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import mate.academy.internetshop.dao.interfaces.ProductDao;
+import mate.academy.internetshop.dao.interfaces.UserDao;
 import mate.academy.internetshop.exceptions.DataProcessingException;
 import mate.academy.internetshop.lib.Dao;
-import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.util.ConnectionUtil;
 import org.apache.log4j.Logger;
 
 @Dao
-public class ProductDaoJdbcImpl implements ProductDao {
+public class UserDaoJdbcImpl implements UserDao {
     private static final Logger LOGGER = Logger.getLogger(ProductDaoJdbcImpl.class);
 
     @Override
-    public Product create(Product element) {
-        String query = "INSERT into products (name, price) VALUES (?, ?);";
+    public User create(User element) {
+        String query = "INSERT into users (name, login, password) VALUES (?, ?, ?);";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query,
                     PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, element.getName());
-            statement.setDouble(2, element.getPrice());
+            statement.setString(2, element.getLogin());
+            statement.setString(3, element.getPassword());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
-            element.setId(resultSet.getLong(1));
+            element.setUserId(resultSet.getLong(1));
             LOGGER.info(element + " Successfully Created");
             return element;
         } catch (SQLException e) {
@@ -38,31 +39,32 @@ public class ProductDaoJdbcImpl implements ProductDao {
     }
 
     @Override
-    public Optional<Product> get(Long id) {
+    public Optional<User> get(Long id) {
         String query = "SELECT * FROM products WHERE id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                Product product = getProduct(resultSet);
-                return Optional.of(product);
+                User user = getUser(resultSet);
+                return Optional.of(user);
             }
             return Optional.empty();
         } catch (SQLException e) {
-            throw new DataProcessingException("Unable to get a product with ID: " + id, e);
+            throw new DataProcessingException("Unable to get a user with ID: " + id, e);
         }
     }
 
     @Override
-    public Product update(Product element) {
-        String query = "UPDATE products SET name = ?, price = ? "
-                + "WHERE id = ?;";
+    public User update(User element) {
+        String query = "UPDATE users SET name = ?, login = ?, password = ? "
+                + "WHERE userId = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, element.getName());
-            statement.setDouble(2, element.getPrice());
-            statement.setLong(3, element.getId());
+            statement.setString(2, element.getLogin());
+            statement.setString(3, element.getPassword());
+            statement.setLong(4, element.getId());
 
             statement.executeUpdate();
             LOGGER.info(element + " Has Been Successfully Updated");
@@ -75,42 +77,61 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public boolean delete(Long id) {
-        String query = "DELETE FROM products WHERE id = ?;";
+        String query = "DELETE FROM users WHERE userId = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
-            PreparedStatement statment = connection.prepareStatement(query);
-            statment.setLong(1, id);
-            int numOfDeletedRows = statment.executeUpdate();
-            LOGGER.info("A product with an id " + id + " has been deleted!");
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, id);
+            int numOfDeletedRows = statement.executeUpdate();
+            LOGGER.info("A user with an id " + id + " has been deleted!");
             return numOfDeletedRows != 0;
         } catch (SQLException e) {
-            throw new DataProcessingException("Unable to delete product with ID: " + id, e);
+            throw new DataProcessingException("Unable to update user with an ID: " + id, e);
         }
     }
 
     @Override
-    public List<Product> getAll() {
-        String query = "SELECT * FROM products;";
-        List<Product> allProducts = new ArrayList<>();
+    public List<User> getAll() {
+        String query = "SELECT * FROM users;";
+        List<User> allUsers = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
+
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Product product = getProduct(resultSet);
-                allProducts.add(product);
+                User user = getUser(resultSet);
+                allUsers.add(user);
             }
-            return allProducts;
+            return allUsers;
         } catch (SQLException e) {
-            throw new DataProcessingException("Unable to get all products", e);
+            throw new DataProcessingException("Unable to get all users ", e);
         }
     }
 
-    private Product getProduct(ResultSet resultSet) throws SQLException {
+    @Override
+    public Optional<User> findByLogin(String login) {
+        String query = "SELECT * FROM users WHERE login = ?;";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, login);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                User user = getUser(resultSet);
+                return Optional.of(user);
+            }
+            return Optional.empty();
+        } catch (SQLException e) {
+            throw new DataProcessingException("Unable to get a user by login: " + login, e);
+        }
+    }
+
+    private User getUser(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getLong("id");
         String name = resultSet.getString("name");
-        Double price = resultSet.getDouble("price");
+        String login = resultSet.getString("login");
+        String password = resultSet.getString("password");
 
-        Product product = new Product(name, price);
-        product.setId(id);
-        return product;
+        User user = new User(name, login, password);
+        user.setUserId(id);
+        return user;
     }
 }

@@ -5,3 +5,11 @@ CREATE TABLE `internet-shop`.`products` (
 `price` DOUBLE NOT NULL,
 PRIMARY KEY (`id`)
 );
+CREATE TABLE `users` (
+`userId` bigint NOT NULL AUTO_INCREMENT,
+`name` varchar(225) NOT NULL,
+`login` varchar(225) NOT NULL,
+`password` varchar(225) NOT NULL,
+PRIMARY KEY (`userId`),
+UNIQUE KEY `login_UNIQUE` (`login`)
+);
