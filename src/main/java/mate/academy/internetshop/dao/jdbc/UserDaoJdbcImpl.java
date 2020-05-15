@@ -71,6 +71,8 @@ public class UserDaoJdbcImpl implements UserDao {
             statement.setLong(4, element.getId());
 
             statement.executeUpdate();
+
+            deleteUsersRoles(element.getUserId());
             LOGGER.info(element + " Has Been Successfully Updated");
 
             return element;
@@ -83,6 +85,11 @@ public class UserDaoJdbcImpl implements UserDao {
     public boolean delete(Long id) {
         String query = "DELETE FROM users WHERE user_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
+            deleteUsersRoles(id);
+            deleteOrdersProducts(id);
+            deleteUserOrders(id);
+            deleteUserShoppingCart(id);
+            deleteUserShoppingCartProducts(id);
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             int numOfDeletedRows = statement.executeUpdate();
@@ -177,6 +184,44 @@ public class UserDaoJdbcImpl implements UserDao {
         String deleteUserQuery = "DELETE FROM users_roles WHERE user_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(deleteUserQuery);
+            statement.setLong(1, userId);
+            statement.executeUpdate();
+        }
+    }
+
+    private void deleteOrdersProducts(Long userId) throws SQLException {
+        String query = "DELETE FROM orders_products WHERE order_id IN"
+                + " (SELECT order_id FROM orders WHERE user_id = ?)";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, userId);
+            statement.executeUpdate();
+        }
+    }
+
+    private void deleteUserOrders(Long userId) throws SQLException {
+        String query = "DELETE FROM orders WHERE user_id = ?";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, userId);
+            statement.executeUpdate();
+        }
+    }
+
+    private void deleteUserShoppingCartProducts(Long userId) throws SQLException {
+        String query = "DELETE FROM shopping_carts_products WHERE cart_id IN"
+                + " (SELECT cart_id FROM shopping_carts WHERE user_id = ?)";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, userId);
+            statement.executeUpdate();
+        }
+    }
+
+    private void deleteUserShoppingCart(Long userId) throws SQLException {
+        String query = "DELETE FROM shopping_carts WHERE user_id = ?";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, userId);
             statement.executeUpdate();
         }
