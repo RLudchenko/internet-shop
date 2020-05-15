@@ -8,7 +8,7 @@ import mate.academy.internetshop.model.User;
 public interface OrderService {
     Order create(Order order);
 
-    Order completeOrder(List<Product> products, User user);
+    Order completeOrder(List<Product> products, Long userId);
 
     List<Order> getUserOrders(User user);
 

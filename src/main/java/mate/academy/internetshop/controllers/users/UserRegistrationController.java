@@ -39,7 +39,8 @@ public class UserRegistrationController extends HttpServlet {
         if (password.equals(passwordConfirm)) {
             user.setRoles(Set.of(Role.of("USER")));
             userService.create(user);
-            shoppingCartService.create(new ShoppingCart(user));
+            ShoppingCart cart = new ShoppingCart(user.getId());
+            shoppingCartService.create(cart);
             resp.sendRedirect(req.getContextPath() + "/");
         } else {
             req.setAttribute("message", "Your passwords doesn't match");

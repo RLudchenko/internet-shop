@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
-import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.interfaces.OrderService;
 import mate.academy.internetshop.service.interfaces.ShoppingCartService;
 
@@ -30,9 +29,8 @@ public class CreateOrderController extends HttpServlet {
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId);
         List<Product> products = List.copyOf(shoppingCart.getProducts());
+        orderService.completeOrder(products, userId);
         shoppingCartService.clear(shoppingCart);
-        User user = shoppingCart.getUser();
-        orderService.completeOrder(products, user);
         resp.sendRedirect(req.getContextPath() + "/orders");
     }
 }

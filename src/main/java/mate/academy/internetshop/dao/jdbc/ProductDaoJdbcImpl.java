@@ -39,7 +39,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public Optional<Product> get(Long id) {
-        String query = "SELECT * FROM products WHERE id = ?;";
+        String query = "SELECT * FROM products WHERE product_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
@@ -57,7 +57,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public Product update(Product element) {
         String query = "UPDATE products SET name = ?, price = ? "
-                + "WHERE id = ?;";
+                + "WHERE product_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, element.getName());
@@ -75,7 +75,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public boolean delete(Long id) {
-        String query = "DELETE FROM products WHERE id = ?;";
+        String query = "DELETE FROM products WHERE product_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statment = connection.prepareStatement(query);
             statment.setLong(1, id);
@@ -105,7 +105,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     }
 
     private Product getProduct(ResultSet resultSet) throws SQLException {
-        Long id = resultSet.getLong("id");
+        Long id = resultSet.getLong("product_id");
         String name = resultSet.getString("name");
         Double price = resultSet.getDouble("price");
 

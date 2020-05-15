@@ -20,7 +20,7 @@
                             <c:out value ="${order.getId()}"/>
                         </td>
                         <td>
-                            <c:out value ="${order.getUser().getName()}"/>
+                            <c:out value ="${order.getUser()}"/>
                         </td>
                         <td>
                             <a href="${pageContext.request.contextPath}/order/detail?id=${order.getId()}">Details</a>
