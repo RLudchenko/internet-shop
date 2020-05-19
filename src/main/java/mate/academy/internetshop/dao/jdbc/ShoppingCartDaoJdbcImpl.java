@@ -97,6 +97,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
         String query = "DELETE FROM shopping_carts WHERE cart_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             deleteShoppingCartFromCartsProducts(id);
+
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             int numberOfRowsDeleted = statement.executeUpdate();

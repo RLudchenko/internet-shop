@@ -3,30 +3,25 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="container">
     <div class="row d-flex justify-content-center mt-5">
-        <div class="col-7">
+        <div class="col-6">
             <table class="table">
-                <thead class="cyan accent-3 white-text">
+                <thead class="pink lighten-1 white-text">
                 <tr>
                     <th>ID</th>
-                    <th>Users</th>
-                    <th>Details</th>
-                    <th>Delete</th>
+                    <th>Name</th>
+                    <th>Price</th>
                 </tr>
                 </thead>
-                <tbody>
-                <c:forEach var="order" items="${orders}">
+                <c:forEach var="product" items="${products}">
                     <tr>
                         <td>
-                            <c:out value ="${order.getId()}"/>
+                            <c:out value ="${product.id}"/>
                         </td>
                         <td>
-                            <c:out value ="${order.getUser()}"/>
+                            <c:out value ="${product.name}"/>
                         </td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/order/detail?id=${order.getId()}">Details</a>
-                        </td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/admin/delete?id=${order.getId()}">Delete</a>
+                            <c:out value ="${product.price}"/>
                         </td>
                     </tr>
                 </c:forEach>
