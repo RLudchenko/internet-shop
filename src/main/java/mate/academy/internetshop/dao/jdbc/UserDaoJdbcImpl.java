@@ -23,13 +23,15 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User create(User element) {
-        String query = "INSERT into users (name, login, password) VALUES (?, ?, ?);";
+        String query = "INSERT into users (name, login, password, salt) "
+                + "VALUES (?, ?, ?, ?);";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query,
                     PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, element.getName());
             statement.setString(2, element.getLogin());
             statement.setString(3, element.getPassword());
+            statement.setBytes(4, element.getSalt());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
@@ -61,14 +63,15 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User update(User element) {
-        String query = "UPDATE users SET name = ?, login = ?, password = ? "
+        String query = "UPDATE users SET name = ?, login = ?, password = ?, salt = ? "
                 + "WHERE user_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, element.getName());
             statement.setString(2, element.getLogin());
             statement.setString(3, element.getPassword());
-            statement.setLong(4, element.getId());
+            statement.setBytes(4, element.getSalt());
+            statement.setLong(5, element.getId());
 
             statement.executeUpdate();
 
@@ -144,9 +147,11 @@ public class UserDaoJdbcImpl implements UserDao {
         String name = resultSet.getString("name");
         String login = resultSet.getString("login");
         String password = resultSet.getString("password");
+        byte[] salt = resultSet.getBytes("salt");
         User user = new User(name, login, password);
         user.setRoles(getRolesFromUserId(id));
         user.setUserId(id);
+        user.setSalt(salt);
         return user;
     }
 
