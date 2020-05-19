@@ -39,7 +39,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public Optional<Product> get(Long id) {
-        String query = "SELECT * FROM products WHERE id = ?;";
+        String query = "SELECT * FROM products WHERE product_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
@@ -57,7 +57,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public Product update(Product element) {
         String query = "UPDATE products SET name = ?, price = ? "
-                + "WHERE id = ?;";
+                + "WHERE product_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, element.getName());
@@ -65,7 +65,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             statement.setLong(3, element.getId());
 
             statement.executeUpdate();
-            LOGGER.info(element + " Has Been Updated");
+            LOGGER.info(element + " Has Been Successfully Updated");
 
             return element;
         } catch (SQLException e) {
@@ -75,12 +75,12 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public boolean delete(Long id) {
-        String query = "DELETE FROM products WHERE id = ?;";
+        String query = "DELETE FROM products WHERE product_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statment = connection.prepareStatement(query);
             statment.setLong(1, id);
             int numOfDeletedRows = statment.executeUpdate();
-            LOGGER.info("A product with id " + id + " was deleted.");
+            LOGGER.info("A product with an id " + id + " has been deleted!");
             return numOfDeletedRows != 0;
         } catch (SQLException e) {
             throw new DataProcessingException("Unable to delete product with ID: " + id, e);
@@ -105,7 +105,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     }
 
     private Product getProduct(ResultSet resultSet) throws SQLException {
-        Long id = resultSet.getLong("id");
+        Long id = resultSet.getLong("product_id");
         String name = resultSet.getString("name");
         Double price = resultSet.getDouble("price");
 

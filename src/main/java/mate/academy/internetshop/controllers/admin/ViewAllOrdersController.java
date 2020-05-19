@@ -27,5 +27,6 @@ public class ViewAllOrdersController extends HttpServlet {
         List<Order> orders = orderService.getAll();
         req.setAttribute("orders", orders);
         req.getRequestDispatcher("/WEB-INF/views/admin/orders.jsp").forward(req, resp);
+        resp.sendRedirect("/admin/orders.jsp");
     }
 }
