@@ -66,8 +66,10 @@ CREATE TABLE `users`
     `name`     varchar(255) NOT NULL,
     `login`    varchar(225) NOT NULL,
     `password` varchar(225) NOT NULL,
+    `salt`     VARBINARY(500) NOT NULL,
     PRIMARY KEY (`user_id`),
-    UNIQUE KEY `login_UNIQUE` (`login`)
+    UNIQUE KEY `login_UNIQUE` (`login`),
+    UNIQUE KEY `salt_UNIQUE` (`salt`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 7
   DEFAULT CHARSET = utf8;
