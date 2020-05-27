@@ -5,7 +5,7 @@
          version="3.1">
     <filter>
         <filter-name>authenticationFilter</filter-name>
-        <filter-class>mate.academy.internetshop.web.filters.AuthenticationFilter</filter-class>
+        <filter-class>rostyslav.ludchenko.internetshop.web.filters.AuthenticationFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -15,7 +15,7 @@
 
     <filter>
         <filter-name>authorizationFilter</filter-name>
-        <filter-class>mate.academy.internetshop.web.filters.AuthorizationFilter</filter-class>
+        <filter-class>rostyslav.ludchenko.internetshop.web.filters.AuthorizationFilter</filter-class>
     </filter>
 
     <filter-mapping>
