@@ -14,6 +14,7 @@ import rostyslav.ludchenko.internetshop.exceptions.DataProcessingException;
 import rostyslav.ludchenko.internetshop.lib.Dao;
 import rostyslav.ludchenko.internetshop.model.Order;
 import rostyslav.ludchenko.internetshop.model.Product;
+import rostyslav.ludchenko.internetshop.model.User;
 import rostyslav.ludchenko.internetshop.util.ConnectionUtil;
 
 @Dao
@@ -152,6 +153,24 @@ public class OrderDaoJdbcImpl implements OrderDao {
             PreparedStatement statement = connection.prepareStatement(deleteOrderQuery);
             statement.setLong(1, orderId);
             statement.executeUpdate();
+        }
+    }
+
+    @Override
+    public List<Order> getUserOrders(Long userId) {
+        List<Order> orders = new ArrayList<>();
+        String getUserOrdersQuery = "SELECT * FROM orders WHERE user_id = ?;";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(getUserOrdersQuery);
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                orders.add(getOrderFromResultSet(resultSet));
+            }
+            return orders;
+        } catch (SQLException e) {
+            throw new DataProcessingException("Unable to get orders ", e);
         }
     }
 }

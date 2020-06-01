@@ -1,6 +1,7 @@
 package rostyslav.ludchenko.internetshop.controllers.order;
 
 import java.io.IOException;
+import java.util.Optional;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,7 @@ public class ViewOrderDetailsController extends HttpServlet {
         String idS = req.getParameter("id");
         Long id = Long.valueOf(idS);
         Order order = orderService.get(id);
-            
+
         req.setAttribute("products", order.getProducts());
         req.getRequestDispatcher("/WEB-INF/views/order.jsp").forward(req, resp);
     }

@@ -1,6 +1,7 @@
 package rostyslav.ludchenko.internetshop.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import rostyslav.ludchenko.internetshop.dao.interfaces.OrderDao;
 import rostyslav.ludchenko.internetshop.lib.Inject;
@@ -29,10 +30,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getUserOrders(User user) {
-        return orderDao.getAll().stream()
-                .filter(order -> order.getUser().equals(user.getId()))
-                .collect(Collectors.toList());
+    public List<Order> getUserOrders(Long id) {
+        return orderDao.getUserOrders(id);
     }
 
     @Override
