@@ -29,4 +29,4 @@ By default, all registered users have the role of a regular user
 if you would like to log in as an admin please enter the following data:  
 
 - Login: admin  
-- Password: 1
+- Password: admin
