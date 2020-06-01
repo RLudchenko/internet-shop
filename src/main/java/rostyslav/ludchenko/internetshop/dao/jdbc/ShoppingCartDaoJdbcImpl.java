@@ -112,9 +112,9 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
         String query = "INSERT INTO shopping_carts_products (cart_id, product_id) "
                 + "VALUES (?, ?);";
         try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement insertStatement =
+                    connection.prepareStatement(query);
             for (Product product : shoppingCart.getProducts()) {
-                PreparedStatement insertStatement =
-                        connection.prepareStatement(query);
                 insertStatement.setLong(1, shoppingCart.getId());
                 insertStatement.setLong(2, product.getId());
                 insertStatement.executeUpdate();
