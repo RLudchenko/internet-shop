@@ -14,7 +14,6 @@ import rostyslav.ludchenko.internetshop.exceptions.DataProcessingException;
 import rostyslav.ludchenko.internetshop.lib.Dao;
 import rostyslav.ludchenko.internetshop.model.Order;
 import rostyslav.ludchenko.internetshop.model.Product;
-import rostyslav.ludchenko.internetshop.model.User;
 import rostyslav.ludchenko.internetshop.util.ConnectionUtil;
 
 @Dao

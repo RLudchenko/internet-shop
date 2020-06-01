@@ -1,14 +1,11 @@
 package rostyslav.ludchenko.internetshop.service.impl;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import rostyslav.ludchenko.internetshop.dao.interfaces.OrderDao;
 import rostyslav.ludchenko.internetshop.lib.Inject;
 import rostyslav.ludchenko.internetshop.lib.Service;
 import rostyslav.ludchenko.internetshop.model.Order;
 import rostyslav.ludchenko.internetshop.model.Product;
-import rostyslav.ludchenko.internetshop.model.User;
 import rostyslav.ludchenko.internetshop.service.interfaces.OrderService;
 import rostyslav.ludchenko.internetshop.service.interfaces.ShoppingCartService;
 
